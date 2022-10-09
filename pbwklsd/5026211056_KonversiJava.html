@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Process a Name</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+      function submitdata() {
+        event.preventDefault();
+        var fn = document.getElementById('fn').value;
+        var ln = document.getElementById('ln').value;
+        var name = fn + ' ' + ln;
+        var sn = name.split(' ');
+        var fnNew = sn[0].substring(0, 1).toUpperCase();
+        var lnNew = sn[sn.length - 1];
+
+        var hasil = lnNew + ', ' + fnNew;
+        return hasil;
+      }
+
+      function cetak() {
+        document.getElementById('hasil').innerHTML = submitdata();
+      }
+    </script>
+    <style>
+      body {
+        background-image: url('./src/image/wallpaper.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container pt-5">
+      <div class="jumbotron w-50 mx-auto">
+        <h2 class="text-center">Form Registrasi Peserta</h2>
+        <form class="mt-4">
+          <div class="form-group">
+            <label for="fn">First Name</label>
+            <input type="text" class="form-control" placeholder="Enter First Name" id="fn" />
+          </div>
+          <div class="form-group">
+            <label for="ln">Last Name</label>
+            <input type="text" class="form-control" placeholder="Enter Last Name" id="ln" />
+          </div>
+          <div class="form-group form-check">
+            <label class="form-check-label"> <input class="form-check-input" type="checkbox" /> Remember me </label>
+          </div>
+          <button type="submit" class="btn btn-primary" onclick="cetak();">Submit</button>
+          <p class="mt-3 text-danger">
+            <i>
+              Hasil :
+              <span id="hasil"></span>
+            </i>
+          </p>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,109 @@
+<html>
+  <head>
+    <title>PENDAFTARAN NO HP</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
+
+    <!-- jQuery library -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- fontawesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous" />
+
+    <!-- javascript-->
+
+    <script>
+      function validasi() {
+        // membaca isi no HP
+        var nohp = document.getElementById('nohp').value;
+        var email = document.getElementById('mail').value;
+
+        // cara 1
+        // if (nohp.length== 0) {
+        //   document.getElementById('errmessage').innerHTML = 'NO HP harus diisi';
+        //   return false;
+        // }
+        if (nohp == '') {
+          document.getElementById('errmessage').innerHTML = 'NO HP harus diisi';
+          return false;
+        }
+        if (isNaN(nohp) == true) {
+          document.getElementById('errmessage').innerHTML = 'NO HP harus angka';
+          return false;
+        }
+        if (nohp[0] != 0) {
+          document.getElementById('errmessage').innerHTML = 'NO HP harus diawali 0';
+          return false;
+        }
+        if (email.length == 0) {
+          document.getElementById('errmessage').innerHTML = 'Email harus diisi';
+          return false;
+        }
+        var tag = email.indexOf('@');
+        var point = email.indexOf('.');
+        if (tag < 1 || point < 1) {
+          document.getElementById('errmessage').innerHTML = 'Email harus memuat @ dan . ';
+          return false;
+        }
+        var emailFix = email.split('@');
+        if (emailFix[0].length < 8) {
+          document.getElementById('errmessage').innerHTML = 'Nama Email harus minimal 8 karakter';
+          return false;
+        }
+        //default value dari return adalah true
+        //dalam 1 function, bisa sudah menemui 1 return, bawahnya tidak akan dijalankan
+        //spasi pakai regex
+      }
+      // kalau true langsung ke action
+      //return false --> berhubungan dengan onsubmit
+
+      // isi empty string
+    </script>
+    <style>
+      body {
+        background-image: url('./src/image/wallpaper.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container pt-5">
+      <div class="jumbotron w-50 mx-auto">
+        <div class="mt-4">
+          <div class="container">
+            <h2 class="text-center mb-4">REGISTRASI MANDIRI NO HP</h2>
+
+            <form method="get" action="http://google.com" onsubmit="return validasi()">
+              <div class="form-group">
+                <label for="nohp">NO HANDPHONE</label>
+                <input type="text" id="nohp" name="nohp" placeholder="Masukkan No HP yang akan diregister" class="form-control" />
+
+                <label for="mail">Alamat Email</label>
+                <input type="text" id="mail" name="mail" placeholder="Masukkan email yang akan diregister" class="form-control" />
+                <!-- kalau type email nanti tulisannya bahasa inggris-->
+
+                <!-- name di server keluar di browser / metode get -->
+                <!-- post untuk passowrd dll -->
+              </div>
+              <input type="submit" class="btn btn-success" value="SIMPAN" />
+              <div class="alert alert-danger mt-4">
+                <div id="errmessage">Error</div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

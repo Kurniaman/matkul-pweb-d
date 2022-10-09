@@ -1,0 +1,24 @@
+.navbar-brand {
+  font-family: Viga;
+  font-size: 32px;
+}
+.nav-item {
+  margin-right: 20px;
+}
+.tombol {
+  border-radius: 10px;
+}
+.nav-item {
+  color: white;
+}
+.catalog {
+  margin-top: 100px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+div.our-product {
+  margin-top: 100px;
+  text-align: center;
+  color: #017bfb;
+  font-weight: bold;
+}
